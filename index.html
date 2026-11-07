@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Digital Craft | Nimrod Fernando - Web Design, Data Entry & Virtual Assistance</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                            800: '#1e3a8a',
+                            900: '#172554',
+                        },
+                        accent: {
+                            500: '#10b981',
+                            600: '#059669',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans Sinhala', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Sinhala:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans Sinhala', sans-serif;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #0d9488 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-slate-200/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo & Name -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <img src="logo.png" alt="Aura Digital Craft Logo" class="w-12 h-12 object-contain rounded-xl group-hover:scale-105 transition-transform shadow-sm">
+                    <div>
+                        <span class="font-extrabold text-xl tracking-tight text-slate-900 block leading-none">Aura Digital Craft</span>
+                        <span class="text-[11px] text-brand-600 font-semibold tracking-wide" data-en="By Nimrod Fernando" data-si="නිම්රොද් ප්‍රනාන්දු විසිනි">By Nimrod Fernando</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex items-center gap-7">
+                    <a href="#home" class="text-sm font-semibold text-slate-700 hover:text-brand-600 transition-colors" data-en="Home" data-si="මුල් පිටුව">Home</a>
+                    <a href="#about" class="text-sm font-semibold text-slate-700 hover:text-brand-600 transition-colors" data-en="About Me" data-si="මා ගැන">About Me</a>
+                    <a href="#services" class="text-sm font-semibold text-slate-700 hover:text-brand-600 transition-colors" data-en="Services" data-si="සේවාවන්">Services</a>
+                    <a href="#pricing" class="text-sm font-semibold text-slate-700 hover:text-brand-600 transition-colors" data-en="Pricing Packages" data-si="මිල ගණන්">Pricing Packages</a>
+                    <a href="#contact" class="text-sm font-semibold text-slate-700 hover:text-brand-600 transition-colors" data-en="Contact" data-si="සම්බන්ධ වන්න">Contact</a>
+                </nav>
+
+                <!-- Language Toggle Button & Mobile Menu Button -->
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleLanguage()" class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 border border-slate-300/80 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-800 transition-all shadow-sm">
+                        <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                        <span id="lang-btn-text">සිංහල</span>
+                    </button>
+
+                    <a href="https://wa.me/94701617800?text=Hello%20Nimrod!%20I%20am%20interested%20in%20your%20services." target="_blank" class="hidden sm:inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-xs font-bold shadow-md hover:shadow-lg transition-all">
+                        <span>WhatsApp</span>
+                    </a>
+
+                    <!-- Mobile Hamburger -->
+                    <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-700 hover:bg-slate-100 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Dropdown Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-6 pt-2 space-y-2 border-t border-slate-200">
+                <a href="#home" onclick="closeMobileMenu()" class="block px-3 py-2 text-base font-semibold text-slate-700 hover:bg-slate-100 rounded-lg" data-en="Home" data-si="මුල් පිටුව">Home</a>
+                <a href="#about" onclick="closeMobileMenu()" class="block px-3 py-2 text-base font-semibold text-slate-700 hover:bg-slate-100 rounded-lg" data-en="About Me" data-si="මා ගැන">About Me</a>
+                <a href="#services" onclick="closeMobileMenu()" class="block px-3 py-2 text-base font-semibold text-slate-700 hover:bg-slate-100 rounded-lg" data-en="Services" data-si="සේවාවන්">Services</a>
+                <a href="#pricing" onclick="closeMobileMenu()" class="block px-3 py-2 text-base font-semibold text-slate-700 hover:bg-slate-100 rounded-lg" data-en="Pricing Packages" data-si="මිල ගණන්">Pricing Packages</a>
+                <a href="#contact" onclick="closeMobileMenu()" class="block px-3 py-2 text-base font-semibold text-slate-700 hover:bg-slate-100 rounded-lg" data-en="Contact" data-si="සම්බන්ධ වන්න">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-b from-brand-50/80 via-slate-50 to-slate-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2.5 bg-white border border-brand-200/80 px-4 py-1.5 rounded-full text-brand-700 font-bold text-xs sm:text-sm shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                        <span data-en="Freelance Web Designer & Virtual Assistant" data-si="වෙබ් ඩිසයින් සහ දත්ත ඇතුළත් කිරීමේ සේවාවන්">Freelance Web Designer & Virtual Assistant</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                        <span data-en="Crafting Clean Websites &" data-si="ඔබේ ව්‍යාපාරයට සරිලන">Crafting Clean Websites &</span> <br>
+                        <span class="gradient-text" data-en="Reliable Digital Assistance" data-si="නවීන වෙබ් අඩවි සහ අථ්‍ය සහය">Reliable Digital Assistance</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed" data-en="Hi! I am Nimrod Fernando. As a dedicated freelancer, I provide responsive Web Design, accurate PDF to Excel data conversion, Data Entry, and Document Formatting at budget-friendly rates." data-si="ආයුබෝවන්! මම නිම්රොද් ප්‍රනාන්දු. ඉතා සාධාරණ සහ දැරිය හැකි මිල ගණන් යටතේ ඔබේ ව්‍යාපාරයට අවශ්‍ය වෙබ් අඩවි නිර්මාණය, Excel / Word දත්ත ඇතුළත් කිරීම සහ ලේඛන සකස් කිරීමේ සේවාවන් මගින් මා සපයන්නෙමි.">
+                        Hi! I am Nimrod Fernando. As a dedicated freelancer, I provide responsive Web Design, accurate PDF to Excel data conversion, Data Entry, and Document Formatting at budget-friendly rates.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#pricing" class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm rounded-xl shadow-lg shadow-brand-600/30 transition-all hover:-translate-y-0.5" data-en="Explore Packages" data-si="පැකේජ සහ මිල ගණන්">
+                            Explore Packages
+                        </a>
+                        <a href="https://wa.me/94701617800?text=Hello%20Nimrod!%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-xl shadow-md transition-all hover:-translate-y-0.5">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                            <span data-en="Chat on WhatsApp" data-si="WhatsApp මගින් කතාකරන්න">Chat on WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <!-- Quick Highlights -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-200/80 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <div class="text-xl font-bold text-slate-900">+94 701617800</div>
+                            <div class="text-xs text-slate-500 font-medium" data-en="Direct Contact" data-si="සෘජු අංකය">Direct Contact</div>
+                        </div>
+                        <div>
+                            <div class="text-xl font-bold text-slate-900">100%</div>
+                            <div class="text-xs text-slate-500 font-medium" data-en="Accuracy & Speed" data-si="නිවැරදි භාවය">Accuracy & Speed</div>
+                        </div>
+                        <div>
+                            <div class="text-xl font-bold text-slate-900">Flexible</div>
+                            <div class="text-xs text-slate-500 font-medium" data-en="Budget Friendly" data-si="සාධාරණ ගාස්තු">Budget Friendly</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Graphic Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white rounded-3xl p-6 shadow-2xl border border-slate-200/80 relative">
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+                            </div>
+                            <span class="text-xs font-mono text-slate-400">auradigitalcraft.com</span>
+                        </div>
+
+                        <!-- Hero Brand Logo Showcase -->
+                        <div class="pt-4 pb-2 text-center">
+                            <img src="logo.png" alt="Aura Digital Craft Showcase" class="w-full max-h-48 object-contain mx-auto rounded-xl shadow-sm border border-slate-100">
+                        </div>
+
+                        <div class="py-4 space-y-4">
+                            <!-- Showcase Item 1 -->
+                            <div class="p-4 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold">💻</div>
+                                    <div>
+                                        <div class="font-bold text-sm text-slate-900" data-en="Web Design" data-si="වෙබ් ඩිසයින්">Web Design</div>
+                                        <div class="text-xs text-slate-500" data-en="HTML, CSS & Tailwind CSS" data-si="නවීන responsive පිටු">HTML, CSS & Tailwind CSS</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-brand-600 bg-white px-3 py-1 rounded-full shadow-sm" data-en="From $15" data-si="රු. 4,500 සිට">From $15</span>
+                            </div>
+
+                            <!-- Showcase Item 2 -->
+                            <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold">📊</div>
+                                    <div>
+                                        <div class="font-bold text-sm text-slate-900" data-en="PDF to Excel" data-si="PDF සිට Excel">PDF to Excel</div>
+                                        <div class="text-xs text-slate-500" data-en="Clean Tables & Data Entry" data-si="පිරිසිදු වගු පරිවර්තනය">Clean Tables & Data Entry</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-emerald-600 bg-white px-3 py-1 rounded-full shadow-sm" data-en="From $5" data-si="රු. 1,500 සිට">From $5</span>
+                            </div>
+
+                            <!-- Showcase Item 3 -->
+                            <div class="p-4 rounded-2xl bg-purple-50 border border-purple-100 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center font-bold">📄</div>
+                                    <div>
+                                        <div class="font-bold text-sm text-slate-900" data-en="Word & Typing" data-si="ලේඛන ටයිප් කිරීම">Word & Typing</div>
+                                        <div class="text-xs text-slate-500" data-en="Sinhala Unicode & Formatting" data-si="සිංහල / ඉංග්‍රීසි ටයිප් කිරීම">Sinhala Unicode & Formatting</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-purple-600 bg-white px-3 py-1 rounded-full shadow-sm" data-en="From $5" data-si="රු. 1,500 සිට">From $5</span>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-slate-900 text-white rounded-2xl text-center">
+                            <div class="text-xs font-semibold text-slate-300" data-en="Quick turnaround & 100% Client Satisfaction" data-si="වේගවත් භාරදීම සහ 100% නිවැරදි නිමාව">Quick turnaround & 100% Client Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Nimrod / Founder Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-slate-900 via-brand-900 to-slate-900 rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-4">
+                        <div class="flex items-center gap-3">
+                            <img src="logo.png" alt="Aura Digital Craft Logo" class="w-10 h-10 object-contain bg-white/10 p-1 rounded-xl">
+                            <span class="px-3.5 py-1 rounded-full text-xs font-bold bg-brand-500/30 text-brand-300 border border-brand-400/30 inline-block uppercase tracking-wider" data-en="MEET THE FREELANCER" data-si="මා ගැන හැඳින්වීම">MEET THE FREELANCER</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">Nimrod Fernando</h2>
+                        <p class="text-sm sm:text-base text-slate-300 leading-relaxed" data-en="I am an independent digital assistant and web designer. Building a solid freelance career requires 100% commitment, transparency, and accuracy. Because I am building my portfolio, you get top-tier dedicated attention at beginner-friendly rates." data-si="මම ස්වාධීන වෙබ් නිර්මාණකරුවෙකු සහ දත්ත කළමනාකරණ සහායකයෙකු ලෙස කටයුතු කරමි. මගේ ප්‍රධානතම අරමුණ වන්නේ සෑම පාරිභෝගිකයෙකුටම 100%ක් නිවැරදි, වේගවත් සහ තෘප්තිමත් සේවාවක් සාධාරණ මිලකට ලබා දීමයි.">
+                            I am an independent digital assistant and web designer. Building a solid freelance career requires 100% commitment, transparency, and accuracy. Because I am building my portfolio, you get top-tier dedicated attention at beginner-friendly rates.
+                        </p>
+                        <div class="flex flex-wrap gap-4 pt-2">
+                            <div class="bg-slate-800/80 px-4 py-2 rounded-xl border border-slate-700 text-xs">
+                                🎯 <span class="font-bold text-white" data-en="100% Attention to Detail" data-si="ඉහළම අවධානය">100% Attention to Detail</span>
+                            </div>
+                            <div class="bg-slate-800/80 px-4 py-2 rounded-xl border border-slate-700 text-xs">
+                                ⚡ <span class="font-bold text-white" data-en="Fast Response & Delivery" data-si="ඉක්මන් පිළිතුරු">Fast Response & Delivery</span>
+                            </div>
+                            <div class="bg-slate-800/80 px-4 py-2 rounded-xl border border-slate-700 text-xs">
+                                💬 <span class="font-bold text-white" data-en="Friendly Communication" data-si="හිතකාමී සහය">Friendly Communication</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-4 text-center lg:text-right">
+                        <a href="https://wa.me/94701617800?text=Hi%20Nimrod!%20I%20saw%20your%20website%20and%20need%20assistance." target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg">
+                            <span data-en="Message Nimrod on WhatsApp" data-si="WhatsApp මගින් විමසන්න">Message Nimrod on WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview Section -->
+    <section id="services" class="py-20 bg-slate-100/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-2" data-en="MY SERVICES" data-si="මගෙන් ඔබට ලැබෙන සේවාවන්">MY SERVICES</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900" data-en="Solutions Tailored For Your Needs" data-si="ඔබගේ සියලුම ඩිජිටල් අවශ්‍යතාවයන්ට විසඳුම්">Solutions Tailored For Your Needs</h3>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 card-hover">
+                    <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center font-bold text-2xl mb-4">🌐</div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2" data-en="Web Design" data-si="වෙබ් ඩිසයින්">Web Design</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed" data-en="Mobile-responsive landing pages and bilingual websites crafted using clean HTML, CSS, and Tailwind CSS." data-si="දුරකථන වලට ගැලපෙන (Mobile Responsive), සිංහල සහ ඉංග්‍රීසි වෙබ් අඩවි සකස් කර දීම.">Mobile-responsive landing pages and bilingual websites crafted using clean HTML, CSS, and Tailwind CSS.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 card-hover">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center font-bold text-2xl mb-4">📊</div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2" data-en="PDF to Excel" data-si="PDF සිට Excel පරිවර්තනය">PDF to Excel</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed" data-en="Converting scanned documents, PDFs, and invoices into clean, structured, error-free Excel sheets." data-si="PDF සහ සටහන් වැරදි නොමැතිව පිරිසිදු Excel Sheet එකක් බවට පරිවර්තනය කිරීම.">Converting scanned documents, PDFs, and invoices into clean, structured, error-free Excel sheets.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 card-hover">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center font-bold text-2xl mb-4">💻</div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2" data-en="Data Entry & VA" data-si="දත්ත ඇතුළත් කිරීම සහ අථ්‍ය සහය">Data Entry & VA</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed" data-en="Web research, email management, product uploads, and continuous administrative support." data-si="වෙබ් පර්යේෂණ (Web Research), ඊමේල් හැසිරවීම සහ අඛණ්ඩ දත්ත ඇතුළත් කිරීමේ සහය.">Web research, email management, product uploads, and continuous administrative support.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 card-hover">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center font-bold text-2xl mb-4">📝</div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2" data-en="Document Typing" data-si="ලේඛන ටයිප් කිරීම සහ සකස් කිරීම">Document Typing</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed" data-en="Fast Sinhala & English typing (Unicode/FM Fonts), professional formatting for reports, and eBooks." data-si="ඉංග්‍රීසි සහ සිංහල (Unicode / FM fonts) ටයිප් කිරීම සහ වාර්තා සකස් කර දීම.">Fast Sinhala & English typing (Unicode/FM Fonts), professional formatting for reports, and eBooks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Packages Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-2" data-en="PRICING PACKAGES" data-si="පැකේජ සහ මිල ගණන්">PRICING PACKAGES</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900" data-en="Transparent & Honest Rates" data-si="ඔබට ගැලපෙන පැකේජයක් තෝරාගන්න">Transparent & Honest Rates</h3>
+                <p class="mt-3 text-slate-600 text-sm" data-en="Click on any category below to view detailed options and pricing." data-si="පහත සේවාවන් මත ක්ලික් කර අදාළ මිල ගණන් පරීක්ෂා කරන්න.">Click on any category below to view detailed options and pricing.</p>
+            </div>
+
+            <!-- Tab Switcher -->
+            <div class="flex flex-wrap justify-center gap-2 mb-12">
+                <button onclick="switchTab('web')" id="tab-web" class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-md">
+                    💻 Web Design
+                </button>
+                <button onclick="switchTab('pdf')" id="tab-pdf" class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">
+                    📊 PDF to Excel
+                </button>
+                <button onclick="switchTab('va')" id="tab-va" class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">
+                    🤝 Data Entry & VA
+                </button>
+                <button onclick="switchTab('typing')" id="tab-typing" class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">
+                    📄 Word Typing & Formatting
+                </button>
+            </div>
+
+            <!-- Category 1: Web Design -->
+            <div id="content-web" class="grid lg:grid-cols-3 gap-8">
+                <!-- Basic -->
+                <div class="bg-slate-50 rounded-2xl p-7 border border-slate-200 flex flex-col justify-between card-hover">
+                    <div>
+                        <span class="px-3 py-1 bg-slate-200 text-slate-700 text-[10px] font-extrabold rounded-full uppercase" data-en="STARTER" data-si="ආරම්භක">STARTER</span>
+                        <h4 class="text-xl font-bold text-slate-900 mt-3" data-en="Basic Landing Page" data-si="තනි පිටුවේ වෙබ් අඩවිය">Basic Landing Page</h4>
+                        <div class="my-4">
+                            <span class="text-3xl font-extrabold text-slate-900">$15 – $25</span>
+                            <span class="text-xs text-slate-500 block font-medium mt-1">(Rs. 4,500 – Rs. 7,500)</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-600 mb-6">
+                            <li class="flex items-center gap-2">✓ <span data-en="Single-page responsive design (HTML/CSS/Tailwind)" data-si="තනි පිටුවක නිර්මාණය (Single Page)">Single-page responsive design (HTML/CSS/Tailwind)</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="WhatsApp Ordering / Contact Form integration" data-si="WhatsApp ඇණවුම් පහසුකම ඇතුළත්ව">WhatsApp Ordering / Contact Form integration</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Fast 2-Day Delivery" data-si="දින 2ක් ඇතුළත භාරදීම">Fast 2-Day Delivery</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="openOrderModal('Web Design - Basic Landing Page ($15 - $25)')" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition-all" data-en="Order Package" data-si="ඇණවුම් කරන්න">Order Package</button>
+                </div>
+
+                <!-- Standard -->
+                <div class="bg-gradient-to-b from-slate-900 to-brand-900 rounded-2xl p-7 text-white border-2 border-brand-500 shadow-xl flex flex-col justify-between card-hover relative">
+                    <span class="absolute -top-3 right-6 bg-brand-500 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase" data-en="BILINGUAL" data-si="සිංහල + ඉංග්‍රීසි">BILINGUAL</span>
+                    <div>
+                        <span class="px-3 py-1 bg-brand-500/20 text-brand-300 text-[10px] font-extrabold rounded-full uppercase" data-en="POPULAR" data-si="වඩාත් ජනප්‍රිය">POPULAR</span>
+                        <h4 class="text-xl font-bold text-white mt-3" data-en="Standard Small Business" data-si="කුඩා ව්‍යාපාරික වෙබ් අඩවිය">Standard Small Business</h4>
+                        <div class="my-4">
+                            <span class="text-3xl font-extrabold text-white">$35 – $50</span>
+                            <span class="text-xs text-slate-300 block font-medium mt-1">(Rs. 10,500 – Rs. 15,000)</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-200 mb-6">
+                            <li class="flex items-center gap-2">✓ <span data-en="2-3 Pages Bilingual (Sinhala & English)" data-si="සිංහල සහ ඉංග්‍රීසි ද්විභාෂා පිටු 2-3ක්">2-3 Pages Bilingual (Sinhala & English)</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Ideal for shop/service businesses (e.g. Sweet Manna)" data-si="කුඩා ව්‍යාපාර සඳහා වඩාත් සුදුසුයි">Ideal for shop/service businesses</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Delivery within 4 Days" data-si="දින 4ක් ඇතුළත භාරදීම">Delivery within 4 Days</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="openOrderModal('Web Design - Standard Bilingual Site ($35 - $50)')" class="w-full py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl text-xs transition-all shadow-lg" data-en="Order Package" data-si="ඇණවුම් කරන්න">Order Package</button>
+                </div>
+
+                <!-- Premium -->
+                <div class="bg-slate-50 rounded-2xl p-7 border border-slate-200 flex flex-col justify-between card-hover">
+                    <div>
+                        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-[10px] font-extrabold rounded-full uppercase" data-en="CUSTOM" data-si="විශේෂිත">CUSTOM</span>
+                        <h4 class="text-xl font-bold text-slate-900 mt-3" data-en="Premium Custom Website" data-si="සම්පූර්ණ වෙබ් විසඳුම">Premium Custom Website</h4>
+                        <div class="my-4">
+                            <span class="text-3xl font-extrabold text-slate-900">$70 – $100</span>
+                            <span class="text-xs text-slate-500 block font-medium mt-1">(Rs. 21,000 – Rs. 30,000)</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-600 mb-6">
+                            <li class="flex items-center gap-2">✓ <span data-en="Fully custom-coded design + Source files included" data-si="සම්පූර්ණ කෝඩ් (Source Files) ඇතුළත්ව">Fully custom-coded design + Source files</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Advanced animations & layout customizer" data-si="ආකර්ෂණීය UI සහ Animations">Advanced animations & UI design</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Delivery within 7 Days" data-si="දින 7ක් ඇතුළත භාරදීම">Delivery within 7 Days</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="openOrderModal('Web Design - Premium Custom ($70 - $100)')" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition-all" data-en="Order Package" data-si="ඇණවුම් කරන්න">Order Package</button>
+                </div>
+            </div>
+
+            <!-- Category 2: PDF to Excel -->
+            <div id="content-pdf" class="grid lg:grid-cols-3 gap-8 hidden">
+                <div class="bg-slate-50 rounded-2xl p-7 border border-slate-200 flex flex-col justify-between card-hover">
+                    <div>
+                        <span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-extrabold rounded-full uppercase" data-en="QUICK CONVERT" data-si="ඉක්මන් පරිවර්තනය">QUICK CONVERT</span>
+                        <h4 class="text-xl font-bold text-slate-900 mt-3" data-en="Basic PDF to Excel" data-si="පිටු 10ක් දක්වා">Basic PDF to Excel</h4>
+                        <div class="my-4">
+                            <span class="text-3xl font-extrabold text-slate-900">$5</span>
+                            <span class="text-xs text-slate-500 block font-medium mt-1">(Rs. 1,500)</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-600 mb-6">
+                            <li class="flex items-center gap-2">✓ <span data-en="Up to 10 Pages converted to clean Excel sheet" data-si="පිටු 10ක් දක්වා පිරිසිදු Excel Sheet එකක්">Up to 10 Pages converted</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Zero formatting errors & 100% accuracy" data-si="100% නිවැරදි භාවය">100% accuracy</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Fast 24-Hour Delivery" data-si="පැය 24ක් ඇතුළත භාරදීම">Fast 24-Hour Delivery</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="openOrderModal('PDF to Excel - Basic ($5)')" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition-all" data-en="Order Package" data-si="ඇණවුම් කරන්න">Order Package</button>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-7 border border-emerald-300 flex flex-col justify-between card-hover">
+                    <div>
+                        <span class="px-3 py-1 bg-emerald-500 text-white text-[10px] font-extrabold rounded-full uppercase" data-en="STANDARD" data-si="සාමාන්‍ය">STANDARD</span>
+                        <h4 class="text-xl font-bold text-slate-900 mt-3" data-en="Standard Data Project" data-si="පිටු 30ක් දක්වා">Standard Data Project</h4>
+                        <div class="my-4">
+                            <span class="text-3xl font-extrabold text-slate-900">$15</span>
+                            <span class="text-xs text-slate-500 block font-medium mt-1">(Rs. 4,500)</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-600 mb-6">
+                            <li class="flex items-center gap-2">✓ <span data-en="Up to 30 Pages with complex tables & data entry" data-si="සංකීර්ණ වගු ඇතුළත් පිටු 30ක් දක්වා">Up to 30 Pages with complex tables</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Structured column layout & data cleansing" data-si="නිවැරදි වගු සහ තීරු සකස්කිරීම">Structured column layout</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Delivery in 2 Days" data-si="දින 2ක් ඇතුළත භාරදීම">Delivery in 2 Days</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="openOrderModal('PDF to Excel - Standard ($15)')" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs transition-all" data-en="Order Package" data-si="ඇණවුම් කරන්න">Order Package</button>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-7 border border-slate-200 flex flex-col justify-between card-hover">
+                    <div>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-extrabold rounded-full uppercase" data-en="BULK PROJECT" data-si="විශාල ලේඛන">BULK PROJECT</span>
+                        <h4 class="text-xl font-bold text-slate-900 mt-3" data-en="Bulk PDF Conversion" data-si="පිටු 70ට වැඩි">Bulk PDF Conversion</h4>
+                        <div class="my-4">
+                            <span class="text-3xl font-extrabold text-slate-900">$30 – $40</span>
+                            <span class="text-xs text-slate-500 block font-medium mt-1">(Rs. 9,000 – Rs. 12,000)</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-600 mb-6">
+                            <li class="flex items-center gap-2">✓ <span data-en="70+ Pages or large inventory lists data entry" data-si="පිටු 70ට වැඩි විශාල ලේඛන හෝ අයිතම ලැයිස්තු">70+ Pages or large inventory lists</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Full review and error check" data-si="සම්පූර්ණ පරීක්ෂාව සහ සකස්කිරීම">Full review and error check</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Delivery in 4 Days" data-si="දින 4ක් ඇතුළත භාරදීම">Delivery in 4 Days</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="openOrderModal('PDF to Excel - Bulk ($30 - $40)')" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition-all" data-en="Order Package" data-si="ඇණවුම් කරන්න">Order Package</button>
+                </div>
+            </div>
+
+            <!-- Category 3: Data Entry & Virtual Assistance -->
+            <div id="content-va" class="grid lg:grid-cols-3 gap-8 hidden">
+                <div class="bg-slate-50 rounded-2xl p-7 border border-slate-200 flex flex-col justify-between card-hover">
+                    <div>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-[10px] font-extrabold rounded-full uppercase" data-en="BASIC TASK" data-si="මූලික වැඩක්">BASIC TASK</span>
+                        <h4 class="text-xl font-bold text-slate-900 mt-3" data-en="Basic VA Support" data-si="පැය 2ක සහය">Basic VA Support</h4>
+                        <div class="my-4">
+                            <span class="text-3xl font-extrabold text-slate-900">$10</span>
+                            <span class="text-xs text-slate-500 block font-medium mt-1">(Rs. 3,000)</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-600 mb-6">
+                            <li class="flex items-center gap-2">✓ <span data-en="2 Hours dedicated task (Web research, emails, etc.)" data-si="පැය 2ක කාලයක් ඇතුළත කළ යුතු පර්යේෂණ හෝ ඊමේල්">2 Hours dedicated task</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Delivery within 1 Day" data-si="දින 1ක් ඇතුළත">Delivery within 1 Day</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="openOrderModal('Data Entry - Basic Task ($10)')" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition-all" data-en="Order Package" data-si="ඇණවුම් කරන්න">Order Package</button>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-7 border border-brand-300 flex flex-col justify-between card-hover">
+                    <div>
+                        <span class="px-3 py-1 bg-brand-600 text-white text-[10px] font-extrabold rounded-full uppercase" data-en="WEEKLY SUPPORT" data-si="සතිපතා සහය">WEEKLY SUPPORT</span>
+                        <h4 class="text-xl font-bold text-slate-900 mt-3" data-en="Standard Weekly VA" data-si="සතියකට පැය 10ක්">Standard Weekly VA</h4>
+                        <div class="my-4">
+                            <span class="text-3xl font-extrabold text-slate-900">$40</span>
+                            <span class="text-xs text-slate-500 block font-medium mt-1">(Rs. 12,000)</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-600 mb-6">
+                            <li class="flex items-center gap-2">✓ <span data-en="10 Hours / week for business support or data management" data-si="සතියකට පැය 10ක් දක්වා අඛණ්ඩ සහය">10 Hours / week support</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Ongoing communication via WhatsApp" data-si="සෘජු WhatsApp සහය">WhatsApp support</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="openOrderModal('Data Entry - Weekly Support ($40)')" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-xs transition-all" data-en="Order Package" data-si="ඇණවුම් කරන්න">Order Package</button>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-7 border border-slate-200 flex flex-col justify-between card-hover">
+                    <div>
+                        <span class="px-3 py-1 bg-amber-100 text-amber-700 text-[10px] font-extrabold rounded-full uppercase" data-en="MONTHLY ASSISTANT" data-si="මාසික සහය">MONTHLY ASSISTANT</span>
+                        <h4 class="text-xl font-bold text-slate-900 mt-3" data-en="Dedicated Monthly VA" data-si="මසකට පැය 40ක්">Dedicated Monthly VA</h4>
+                        <div class="my-4">
+                            <span class="text-3xl font-extrabold text-slate-900">$150 – $200</span>
+                            <span class="text-xs text-slate-500 block font-medium mt-1">(Rs. 45,000 – Rs. 60,000)</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-600 mb-6">
+                            <li class="flex items-center gap-2">✓ <span data-en="40 Hours / month continuous support" data-si="මසකට පැය 40ක් දක්වා අඛණ්ඩ සහයෝගය">40 Hours / month support</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Order tracking, Data entry & Basic graphic support" data-si="ඇණවුම් කළමනාකරණය සහ ග්‍රැෆික් සහය">Order tracking & graphics support</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="openOrderModal('Data Entry - Monthly Assistant ($150 - $200)')" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition-all" data-en="Order Package" data-si="ඇණවුම් කරන්න">Order Package</button>
+                </div>
+            </div>
+
+            <!-- Category 4: Word Typing & Formatting -->
+            <div id="content-typing" class="grid lg:grid-cols-3 gap-8 hidden">
+                <div class="bg-slate-50 rounded-2xl p-7 border border-slate-200 flex flex-col justify-between card-hover">
+                    <div>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-700 text-[10px] font-extrabold rounded-full uppercase" data-en="QUICK TYPING" data-si="ඉක්මන් ටයිප් කිරීම">QUICK TYPING</span>
+                        <h4 class="text-xl font-bold text-slate-900 mt-3" data-en="Basic Document Typing" data-si="පිටු 5ක් දක්වා">Basic Document Typing</h4>
+                        <div class="my-4">
+                            <span class="text-3xl font-extrabold text-slate-900">$5 – $10</span>
+                            <span class="text-xs text-slate-500 block font-medium mt-1">(Rs. 1,500 – Rs. 3,000)</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-600 mb-6">
+                            <li class="flex items-center gap-2">✓ <span data-en="Up to 5 Pages handwritten notes/images typed in MS Word" data-si="පිටු 5ක් දක්වා පිරිසිදුව ටයිප් කර දීම">Up to 5 Pages handwritten/images</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="English or Sinhala (Unicode / FM Fonts)" data-si="ඉංග්‍රීසි සහ සිංහල ෆොන්ට්ස්">English / Sinhala Unicode or FM</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Fast 24-Hour Delivery" data-si="පැය 24ක් ඇතුළත">Fast 24-Hour Delivery</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="openOrderModal('Word Typing - Basic ($5 - $10)')" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition-all" data-en="Order Package" data-si="ඇණවුම් කරන්න">Order Package</button>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-7 border border-indigo-300 flex flex-col justify-between card-hover">
+                    <div>
+                        <span class="px-3 py-1 bg-indigo-600 text-white text-[10px] font-extrabold rounded-full uppercase" data-en="REPORTS & FORMATTING" data-si="වාර්තා සකස්කිරීම">REPORTS & FORMATTING</span>
+                        <h4 class="text-xl font-bold text-slate-900 mt-3" data-en="Standard Report Formatting" data-si="පිටු 15-20 වාර්තා">Standard Report Formatting</h4>
+                        <div class="my-4">
+                            <span class="text-3xl font-extrabold text-slate-900">$15 – $25</span>
+                            <span class="text-xs text-slate-500 block font-medium mt-1">(Rs. 4,500 – Rs. 7,500)</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-600 mb-6">
+                            <li class="flex items-center gap-2">✓ <span data-en="15-20 Pages Reports, Assignments or Letters" data-si="පිටු 15-20ක වාර්තා හෝ පැවරුම්">15-20 Pages Reports / Assignments</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Professional formatting, headers/footers, and tables" data-si="Headers, Footers සහ වගු නිවැරදි කිරීම">Professional formatting & tables</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Delivery in 2 Days" data-si="දින 2ක් ඇතුළත">Delivery in 2 Days</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="openOrderModal('Word Typing - Standard ($15 - $25)')" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs transition-all" data-en="Order Package" data-si="ඇණවුම් කරන්න">Order Package</button>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-7 border border-slate-200 flex flex-col justify-between card-hover">
+                    <div>
+                        <span class="px-3 py-1 bg-rose-100 text-rose-700 text-[10px] font-extrabold rounded-full uppercase" data-en="EBOOK / PROPOSALS" data-si="පොත් සහ යෝජනා ක්‍රම">EBOOK / PROPOSALS</span>
+                        <h4 class="text-xl font-bold text-slate-900 mt-3" data-en="Large Document / eBook" data-si="පිටු 40ට වැඩි">Large Document / eBook</h4>
+                        <div class="my-4">
+                            <span class="text-3xl font-extrabold text-slate-900">$35 – $50</span>
+                            <span class="text-xs text-slate-500 block font-medium mt-1">(Rs. 10,500 – Rs. 15,000)</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-600 mb-6">
+                            <li class="flex items-center gap-2">✓ <span data-en="40+ Pages eBooks, Business Proposals, or manuals" data-si="පිටු 40ට වැඩි විශාල පොත්පත් හෝ යෝජනා ක්‍රම">40+ Pages eBooks / Proposals</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Complete creative layout formatting" data-si="සම්පූර්ණ පිටු සැලසුම්කරණය">Complete creative layout</span></li>
+                            <li class="flex items-center gap-2">✓ <span data-en="Delivery in 4-5 Days" data-si="දින 4-5ක් ඇතුළත">Delivery in 4-5 Days</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="openOrderModal('Word Typing - Premium ($35 - $50)')" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition-all" data-en="Order Package" data-si="ඇණවුම් කරන්න">Order Package</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive WhatsApp Order Modal -->
+    <div id="order-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-3xl max-w-md w-full p-7 shadow-2xl border border-slate-100 relative">
+            <button onclick="closeOrderModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xl">💬</div>
+                <div>
+                    <h3 class="font-bold text-lg text-slate-900" id="modal-title" data-en="Direct WhatsApp Order" data-si="WhatsApp හරහා ඇණවුම් කරන්න">Direct WhatsApp Order</h3>
+                    <p class="text-xs text-slate-500" data-en="Send details to Nimrod Fernando" data-si="නිම්රොද් ප්‍රනාන්දු වෙත පණිවිඩය යවන්න">Send details to Nimrod Fernando</p>
+                </div>
+            </div>
+
+            <div class="mb-5 p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+                <div class="text-[11px] uppercase font-bold text-slate-400 mb-1" data-en="Selected Package" data-si="තෝරාගත් පැකේජය">Selected Package</div>
+                <div class="font-bold text-slate-800 text-sm" id="selected-pkg-name">Web Design Basic</div>
+            </div>
+
+            <form onsubmit="sendWhatsAppOrder(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-700 mb-1" data-en="Your Name" data-si="ඔබගේ නම">Your Name</label>
+                    <input type="text" id="cust-name" required placeholder="Kasun Perera" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 outline-none text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-700 mb-1" data-en="Specific Requirements (Optional)" data-si="විශේෂ අවශ්‍යතා (අවශ්‍ය නම්)">Specific Requirements (Optional)</label>
+                    <textarea id="cust-notes" rows="3" placeholder="Briefly describe what you need..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 outline-none text-xs"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs transition-all shadow-lg flex items-center justify-center gap-2">
+                    <span data-en="Open WhatsApp & Send Order" data-si="WhatsApp මගින් පණිවිඩය යවන්න">Open WhatsApp & Send Order</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact & Direct Inquiry Section -->
+    <section id="contact" class="py-20 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-400" data-en="GET IN TOUCH" data-si="සම්බන්ධ වන්න">GET IN TOUCH</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold" data-en="Have Questions? Let's Talk Directly" data-si="ඔබට ප්‍රශ්න තියෙනවද? දැන්ම කතාකරන්න">Have Questions? Let's Talk Directly</h2>
+                    <p class="text-sm text-slate-300 leading-relaxed" data-en="Whether you need a quick quote for PDF conversion, a customized web design package, or daily virtual assistance support, feel free to drop a message." data-si="ඔබගේ වෙබ් අඩවිය හෝ දත්ත ඇතුළත් කිරීම පිළිබඳව ඕනෑම තොරතුරක් දැනගැනීමට WhatsApp හෝ දුරකථනය මගින් සෘජුවම සම්බන්ධ වන්න.">
+                        Whether you need a quick quote for PDF conversion, a customized web design package, or daily virtual assistance support, feel free to drop a message.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-center gap-4 p-4 bg-slate-800/80 rounded-2xl border border-slate-700">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">📞</div>
+                            <div>
+                                <div class="text-xs text-slate-400" data-en="Phone & WhatsApp" data-si="දුරකථන සහ WhatsApp අංකය">Phone & WhatsApp</div>
+                                <div class="text-base font-bold text-white">+94 701617800</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 bg-slate-800/80 rounded-2xl border border-slate-700">
+                            <div class="w-10 h-10 rounded-xl bg-brand-500/20 text-brand-400 flex items-center justify-center font-bold">👤</div>
+                            <div>
+                                <div class="text-xs text-slate-400" data-en="Owner & Developer" data-si="නිර්මාණකරු">Owner & Developer</div>
+                                <div class="text-base font-bold text-white">Nimrod Fernando</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="bg-white text-slate-900 rounded-3xl p-8 shadow-2xl border border-slate-200">
+                        <h3 class="text-xl font-bold mb-4" data-en="Send Direct Message" data-si="සෘජු පණිවිඩයක් යවන්න">Send Direct Message</h3>
+                        <form onsubmit="handleDirectMessage(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-700 mb-1" data-en="Your Name" data-si="ඔබගේ නම">Your Name</label>
+                                <input type="text" id="direct-name" required placeholder="Kasun" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 outline-none text-xs">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-700 mb-1" data-en="Service Needed" data-si="අවශ්‍ය සේවාව">Service Needed</label>
+                                <select id="direct-service" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 outline-none text-xs bg-white">
+                                    <option value="Web Design">Web Design (වෙබ් ඩිසයින්)</option>
+                                    <option value="PDF to Excel">PDF to Excel (දත්ත පරිවර්තනය)</option>
+                                    <option value="Data Entry & VA">Data Entry & Virtual Assistance</option>
+                                    <option value="Word Typing">Document Typing & Formatting</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-700 mb-1" data-en="Message" data-si="පණිවිඩය">Message</label>
+                                <textarea id="direct-msg" rows="3" required placeholder="Write your message here..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 outline-none text-xs"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-xs transition-all shadow-md">
+                                <span data-en="Send via WhatsApp" data-si="WhatsApp මගින් යවන්න">Send via WhatsApp</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-10 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Aura Digital Craft Logo" class="w-8 h-8 object-contain rounded-lg">
+                <span class="font-bold text-white">Aura Digital Craft</span> - Nimrod Fernando
+            </div>
+            <div>
+                &copy; <span id="year"></span> Aura Digital Craft. <span data-en="All rights reserved." data-si="සියලුම හිමිකම් ඇවිරිණි.">All rights reserved.</span>
+            </div>
+            <div>
+                <a href="#home" class="hover:text-white" data-en="Back to top ↑" data-si="ඉහළට ↑">Back to top &uarr;</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Scripting -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        let currentLanguage = 'en';
+        let currentSelectedPackage = '';
+
+        // Language Switcher Function
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'en' ? 'si' : 'en';
+            document.getElementById('lang-btn-text').textContent = currentLanguage === 'en' ? 'සිංහල' : 'English';
+
+            const elements = document.querySelectorAll('[data-en]');
+            elements.forEach(el => {
+                const text = currentLanguage === 'si' ? el.getAttribute('data-si') : el.getAttribute('data-en');
+                if (text) {
+                    el.textContent = text;
+                }
+            });
+        }
+
+        // Tab Switcher for Packages
+        function switchTab(category) {
+            const tabs = ['web', 'pdf', 'va', 'typing'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                const content = document.getElementById(`content-${t}`);
+                
+                if (t === category) {
+                    btn.className = "px-5 py-2.5 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-md";
+                    content.classList.remove('hidden');
+                } else {
+                    btn.className = "px-5 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200";
+                    content.classList.add('hidden');
+                }
+            });
+        }
+
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        // Modal Functionality
+        function openOrderModal(packageName) {
+            currentSelectedPackage = packageName;
+            document.getElementById('selected-pkg-name').textContent = packageName;
+            document.getElementById('order-modal').classList.remove('hidden');
+        }
+
+        function closeOrderModal() {
+            document.getElementById('order-modal').classList.add('hidden');
+        }
+
+        // Process WhatsApp Order from Modal
+        function sendWhatsAppOrder(e) {
+            e.preventDefault();
+            const name = document.getElementById('cust-name').value;
+            const notes = document.getElementById('cust-notes').value;
+
+            const text = `Hello Nimrod! My name is ${name}. I would like to order the package: "${currentSelectedPackage}". Notes: ${notes || 'None'}`;
+            const encodedText = encodeURIComponent(text);
+            
+            window.open(`https://wa.me/94701617800?text=${encodedText}`, '_blank');
+            closeOrderModal();
+        }
+
+        // Process Direct Message Form
+        function handleDirectMessage(e) {
+            e.preventDefault();
+            const name = document.getElementById('direct-name').value;
+            const service = document.getElementById('direct-service').value;
+            const msg = document.getElementById('direct-msg').value;
+
+            const text = `Hello Nimrod! My name is ${name}. Service Interested: ${service}. Message: ${msg}`;
+            const encodedText = encodeURIComponent(text);
+
+            window.open(`https://wa.me/94701617800?text=${encodedText}`, '_blank');
+        }
+    </script>
+</body>
+</html>
